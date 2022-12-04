@@ -1,0 +1,82 @@
+$btn-sizes: (
+  'small': 28,
+  'default': 36,
+  'large': 44
+);
+
+$btn-font-sizes: (
+  'small': .75rem,
+  'default': .875rem,
+  'large': .875rem,
+);
+
+$btn-round-border-radius: 50%;
+$btn-border-radius: 50%;
+$btn-font-weight: 500;
+$btn-text-transform: uppercase;
+
+.v-btn {
+  position: relative;
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: $border-radius-root;
+  user-select: none;
+  vertical-align: middle;
+  font-weight: $btn-font-weight;
+  text-transform: $btn-text-transform;
+  white-space: nowrap;
+
+  @include elevation(2);
+
+  @each $name, $size in $btn-font-sizes {
+    &.v-size--#{$name} {
+      font-size: $size;
+    }
+  }
+
+  &:not(.v-btn--round) {
+    @each $name, $size in $btn-sizes {
+      &.v-size--#{$name} {
+        height: #{$size}px;
+        min-width: #{round($size * 1.777777777777778)}px;
+        padding: 0 #{$size / 2.25}px;
+      }
+    }
+  }
+
+  &__content {
+    align-items: center;
+    color: inherit;
+    display: flex;
+    flex: 1 0 auto;
+    justify-content: inherit;
+    line-height: normal;
+    position: relative;
+  }
+
+  &--block {
+    display: flex;
+    flex: 1 0 auto;
+    min-width: 100% !important;
+    max-width: none;
+  }
+
+  &--round {
+    border-radius: $btn-round-border-radius;
+  }
+
+  &--icon {
+    min-height: 0;
+    min-width: 0;
+    padding: 0;
+
+    @each $name, $size in $btn-sizes {
+      &.v-size--#{$name} {
+        height: #{$size}px;
+        width: #{$size}px;
+      }
+    }
+  }
+}

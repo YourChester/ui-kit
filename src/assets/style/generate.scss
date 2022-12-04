@@ -1,0 +1,89 @@
+@mixin background-color($color_value) {
+  background-color: $color_value !important;
+  border-color: $color_value !important;
+}
+@mixin text-color($color_value) {
+  color: $color_value !important;
+  caret-color: $color_value !important;
+}
+
+// Put the loop in a function so it can't leak
+@each $color_name, $color_value in $shades {
+  .v-app .#{$color_name} {
+    @include background-color($color_value);
+  }
+
+  .v-app .#{$color_name}--text {
+    @include text-color($color_value);
+  }
+}
+
+@each $color_name, $color_color in $colors {
+  @each $color_type, $color_value in $color_color {
+    @if ($color_type == 'base') {
+      .v-app .#{$color_name} {
+        @include background-color($color_value);
+      }
+
+      .v-app .#{$color_name}--text {
+        @include text-color($color_value);
+      }
+    }
+    @else if ($color_type != 'shades') {
+      .v-app .#{$color_name}.#{$color_type} {
+        @include background-color($color_value);
+      }
+
+      .v-app .#{$color_name}--text.text--#{$color_type} {
+        @include text-color($color_value);
+      }
+    }
+  }
+}
+
+
+$index: 0;
+$step: 4;
+@while $index <= 16 {
+  .v-app .ma-#{$index} {
+    margin: #{$index * $step}px;
+  }
+
+  .v-app .mt-#{$index} {
+    margin-top: #{$index * $step}px;
+  }
+
+  .v-app .mb-#{$index} {
+    margin-bottom: #{$index * $step}px;
+  }
+
+  .v-app .mr-#{$index} {
+    margin-right: #{$index * $step}px;
+  }
+
+  .v-app .ml-#{$index} {
+    margin-left: #{$index * $step}px;
+  }
+
+  .v-app .pa-#{$index} {
+    padding: #{$index * $step}px;
+  }
+
+  .v-app .pt-#{$index} {
+    padding-top: #{$index * $step}px;
+  }
+
+  .v-app .pb-#{$index} {
+    padding-bottom: #{$index * $step}px;
+  }
+
+  .v-app .pr-#{$index} {
+    padding-right: #{$index * $step}px;
+  }
+
+  .v-app .pl-#{$index} {
+    padding-left: #{$index * $step}px;
+  }
+
+  $index: $index + 1;
+}

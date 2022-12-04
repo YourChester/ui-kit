@@ -1,0 +1,18 @@
+.v-app {
+  display: flex;
+  position: relative;
+
+  a {
+    cursor: pointer;
+  }
+
+  &__wrapper {
+    flex: 1 1 auto;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 100%;
+    position: relative;
+  }
+}

@@ -1,0 +1,21 @@
+@import './reset.scss';
+@import './normalize.scss';
+@import './fonts.scss';
+@import './color.scss';
+@import './elevation.scss';
+@import './function.scss';
+@import './generate.scss';
+
+$border-radius-root: 4px !default;
+$font-family-root: 'Roboto', sans-serif;
+$font-size-root: 16px;
+$line-height-root: 1.5;
+
+html {
+  font-family: $font-family-root;
+  font-size: $font-size-root;
+}
+
+.v-app {
+  line-height: $line-height-root;
+}
